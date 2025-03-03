@@ -43,8 +43,7 @@
             <flux:spacer />
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="user-group" href="/settings/profile">Users</flux:navlist.item>
-                <flux:navlist.item icon="cog-6-tooth" href="/settings/profile">Settings</flux:navlist.item>  
+                <flux:navlist.item icon="user-group" href="#">Users</flux:navlist.item>
                 <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
             </flux:navlist>
 
