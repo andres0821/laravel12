@@ -1,3 +1,14 @@
+@php
+    $groups = [
+            'Platform' => [
+                ['name'=>'Dashboard', 'icon' => 'home', 'href' => route('dashboard'), 'current' => request()->routeIs('dashboard'), 'text' => 'Dashboard'],
+                ['name'=>'Inbox', 'icon' => 'inbox', 'href' => '#', 'current' => false, 'text' => 'Inbox'],
+                ['name'=>'Documents', 'icon' => 'document-text', 'href' => '#', 'current' => false, 'text' => 'Documents'],
+                ['name'=>'Calendar', 'icon' => 'calendar', 'href' => '#', 'current' => false, 'text' => 'Calendar'],
+            ],
+    ];
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
@@ -11,22 +22,30 @@
                 <x-app-logo class="size-8" href="#"></x-app-logo>
             </a>
 
+            <!-- Sidebar Navigation -->
             <flux:navlist variant="outline">
-                <flux:navlist.group heading="Platform" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                </flux:navlist.group>
+                @foreach ($groups as $group => $links) 
+                        <flux:navlist.group :heading="$group" class="grid">
+                            @foreach ($links as $link)
+                                <flux:navlist.item
+                                    :icon="$link['icon']"
+                                    :href="$link['href']"
+                                    :current="$link['current']"
+                                    wire:navigate="$link['name']"
+                                    >
+                                    {{ $link['text'] }}
+                                </flux:navlist.item>
+                            @endforeach
+                        </flux:navlist.group>                        
+                    @endforeach                
             </flux:navlist>
 
             <flux:spacer />
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
+                <flux:navlist.item icon="user-group" href="/settings/profile">Users</flux:navlist.item>
+                <flux:navlist.item icon="cog-6-tooth" href="/settings/profile">Settings</flux:navlist.item>  
+                <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
             </flux:navlist>
 
             <!-- Desktop User Menu -->
