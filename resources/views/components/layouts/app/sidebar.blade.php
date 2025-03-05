@@ -2,7 +2,7 @@
     $groups = [
             'Platform' => [
                 ['name'=>'Dashboard', 'icon' => 'home', 'href' => route('dashboard'), 'current' => request()->routeIs('dashboard'), 'text' => 'Dashboard'],
-                ['name'=>'Inbox', 'icon' => 'inbox', 'href' => '#', 'current' => false, 'text' => 'Inbox'],
+                ['name'=>'Inbox', 'icon' => 'inbox', 'href' => route('admin.index'), 'current' => false, 'text' => 'Inbox'],
                 ['name'=>'Documents', 'icon' => 'document-text', 'href' => '#', 'current' => false, 'text' => 'Documents'],
                 ['name'=>'Calendar', 'icon' => 'calendar', 'href' => '#', 'current' => false, 'text' => 'Calendar'],
             ],
