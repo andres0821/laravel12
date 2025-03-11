@@ -3,6 +3,7 @@
             'Platform' => [
                 ['name'=>'Dashboard', 'icon' => 'home', 'href' => route('dashboard'), 'current' => request()->routeIs('dashboard'), 'text' => 'Dashboard'],
                 ['name'=>'Categorías', 'icon' => 'tag', 'href' => route('admin.categories.index'), 'current' => request()->routeIs('admin.categories.*'), 'text' => 'Categorías'],
+                ['name'=>'Employee', 'icon' => 'users', 'href' => route('admin.employees.index'), 'current' => request()->routeIs('admin.employee.*'), 'text' => 'Employee'],
                 ['name'=>'Admin', 'icon' => 'briefcase', 'href' => route('admin.index'), 'current' => false, 'text' => 'Inbox'],
                 ['name'=>'Calendar', 'icon' => 'calendar', 'href' => '#', 'current' => false, 'text' => 'Calendar'],
             ],

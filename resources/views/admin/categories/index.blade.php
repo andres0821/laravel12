@@ -21,7 +21,7 @@
                     <th scope="col" class="px-6 py-3">
                         Name
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-6 py-3" style="width: 10px;">
                         Action
                     </th>
                 </tr>
@@ -36,12 +36,38 @@
                         {{ $category->name }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
+                        <div class="flex space-x-2">
+                            <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-blue text-xs">Editar</a>
+                            <form id="fmrDatos" action="{{ route('admin.categories.destroy', $category) }}" method="post">
+                                @method('delete')
+                                @csrf                                
+                                <button type="submit" class="btn btn-red text-xs">Eliminar</button>
+                            </form>                            
+                        </div>
+                    </td>                               
                 </tr>                    
                 @endforeach                
             </tbody>
         </table>
     </div>
+
+    <script>
+        $('#fmrDatos').on('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "¿Esta seguro?",
+                text: "No podrás revertir esto!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "¡Si, borrar!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });            
+        });
+    </script>
 
 </x-layouts.app>
