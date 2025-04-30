@@ -1,7 +1,7 @@
 @php
     $links = [
 
-        ['name'=>'Home', 'icon' => 'layout-grid', 'href' => route('home'), 'current' => request()->routeIs('home'), 'text' => 'Home'],
+        ['name'=>'Posts', 'icon' => 'layout-grid', 'href' => route('posts.index'), 'current' => request()->routeIs('posts.*'), 'text' => 'Posts'],
             
     ];
 @endphp
